@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1729450283899422555}
   - component: {fileID: 7547576180417109535}
+  - component: {fileID: 5311769185857792135}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -26,10 +27,11 @@ Transform:
   m_GameObject: {fileID: 1277387835296633148}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.38698, y: 0.5, z: 4.69038}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 5702281366837490819}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7547576180417109535
@@ -45,3 +47,71 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TowerDefense.Managers.AIManager
   aiPrefab: {fileID: 6423308186740176012, guid: 5be606e15ae196343bc7761feaa9c5f0, type: 3}
+  baseAmountToSpawn: 5
+  spline: {fileID: 0}
+  timeBetweenSpawns: 3
+--- !u!114 &5311769185857792135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1277387835296633148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75d07616413900e4f8f93636f74e691b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TowerDefense.Managers.RoundManager
+  allModifiers:
+  - {fileID: 11400000, guid: f733c024e4c68d24db1de33a0622ee89, type: 2}
+  - {fileID: 11400000, guid: c5e70391d8a95364faf95dd15cc0f509, type: 2}
+  - {fileID: 11400000, guid: 8127ce2ea91a5b7419122a882364fff5, type: 2}
+  modifiersPerRound: 2
+  activeModifiers: []
+--- !u!1 &5239348627421981922
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5702281366837490819}
+  - component: {fileID: 594912519691496926}
+  m_Layer: 0
+  m_Name: WorldGrid
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5702281366837490819
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5239348627421981922}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -50, y: 0, z: -50}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1729450283899422555}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &594912519691496926
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5239348627421981922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad87ceec42184f2fa13275f308f41ba5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TowerDefense.Managers.PlacementGrid
+  maxWidth: 100
+  maxHeight: 100
+  cellSize: 3

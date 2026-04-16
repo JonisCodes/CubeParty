@@ -14,23 +14,23 @@ namespace TowerDefense.AI
             {
                 EditorGUI.BeginChangeCheck();
 
-                var newPos = Handles.PositionHandle(spline.nodes[i], Quaternion.identity);
+                var worldPos = spline.transform.TransformPoint(spline.nodes[i]);
+                var newWorldPos = Handles.PositionHandle(worldPos, Quaternion.identity);
 
                 if (EditorGUI.EndChangeCheck())
                 {
                     Undo.RecordObject(spline, "Move Spline Node");
-                    spline.nodes[i] = newPos;
+                    spline.nodes[i] = spline.transform.InverseTransformPoint(newWorldPos);
                 }
 
-                Handles.Label(spline.nodes[i] + Vector3.up * 0.3f, $"Node {i}");
+                Handles.Label(worldPos + Vector3.up * 0.3f, $"Node {i}");
             }
 
-            // Draw lines between nodes in the scene view
             Handles.color = Color.red;
             for (var i = 1; i < spline.nodes.Count; i++)
-            {
-                Handles.DrawLine(spline.nodes[i - 1], spline.nodes[i]);
-            }
+                Handles.DrawLine(
+                    spline.transform.TransformPoint(spline.nodes[i - 1]),
+                    spline.transform.TransformPoint(spline.nodes[i]));
         }
 
         public override void OnInspectorGUI()
@@ -46,7 +46,7 @@ namespace TowerDefense.AI
                 Undo.RecordObject(spline, "Add Spline Node");
                 var lastPos = spline.nodes.Count > 0
                     ? spline.nodes[^1] + Vector3.right * 2f
-                    : spline.transform.position;
+                    : Vector3.zero;
                 spline.nodes.Add(lastPos);
             }
 
@@ -54,6 +54,13 @@ namespace TowerDefense.AI
             {
                 Undo.RecordObject(spline, "Remove Spline Node");
                 spline.nodes.RemoveAt(spline.nodes.Count - 1);
+            }
+
+            if (spline.nodes.Count > 0 && GUILayout.Button("Update All Node Positions"))
+            {
+                Undo.RecordObject(spline, "Convert Nodes to Local Space");
+                for (var i = 0; i < spline.nodes.Count; i++)
+                    spline.nodes[i] = spline.transform.InverseTransformPoint(spline.nodes[i]);
             }
         }
     }

@@ -9,7 +9,7 @@ namespace TowerDefense.Managers
     {
         [SerializeField] private GameObject aiPrefab;
         [SerializeField] private int baseAmountToSpawn = 5;
-        [SerializeField] private Spline spline;
+        [SerializeField] private Spline startingSpline;
         [SerializeField] private float timeBetweenSpawns = 1f;
 
 
@@ -28,6 +28,11 @@ namespace TowerDefense.Managers
             }
 
             Instance = this;
+
+            var sections = GameObject.FindGameObjectWithTag("Sections");
+            var firstSection = sections.transform.GetChild(0).gameObject;
+            startingSpline = firstSection.GetComponentInChildren<Spline>();
+            print(startingSpline);
         }
 
         public void StartWave()
@@ -51,7 +56,7 @@ namespace TowerDefense.Managers
                 enemy.Health *= RoundManager.Instance.EnemyHealthMultiplier;
 
                 var movement = newEnemy.GetComponent<EnemyMovement>();
-                movement.Initialize(spline);
+                movement.Initialize(startingSpline);
                 movement.SetSpeed(RoundManager.Instance.EnemySpeedMultiplier);
                 newEnemy.SetActive(false);
                 EnemyMovements.Add(movement);
