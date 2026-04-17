@@ -52,7 +52,7 @@ namespace TowerDefense.Player
             if (!Physics.Raycast(ray, out var hit, Mathf.Infinity, groundLayer)) return;
 
             var cellPos = grid.WorldToCell(hit.point);
-            _ghostTransform.position = grid.CellToWorld(cellPos);
+            _ghostTransform.position = grid.CellToWorldSurface(cellPos);
 
             if (grid.IsValid(cellPos))
             {

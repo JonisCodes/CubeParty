@@ -24,7 +24,7 @@ public class GizmoHandler : MonoBehaviour
         }
 
         Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(transform.position, GetTotalRange());
+        Gizmos.DrawWireSphere(_tower.GetPosition(), GetTotalRange());
     }
 
     private float GetTotalRange()

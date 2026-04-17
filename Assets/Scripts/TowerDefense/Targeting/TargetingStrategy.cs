@@ -11,7 +11,7 @@ namespace TowerDefense.Targeting
     {
         protected List<Enemy> FilterInRange(Tower tower, List<Enemy> enemies)
         {
-            return enemies.Where(e => Vector3.Distance(tower.transform.position, e.transform.position) <= tower.Range)
+            return enemies.Where(e => Vector3.Distance(tower.GetPosition(), e.transform.position) <= tower.Range)
                 .ToList();
         }
 

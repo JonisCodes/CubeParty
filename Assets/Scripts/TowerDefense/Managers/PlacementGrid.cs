@@ -10,6 +10,8 @@ namespace TowerDefense.Managers
         [SerializeField] private int maxHeight;
         [SerializeField] private int cellSize;
 
+        public bool ShowGrid = true;
+
         private Dictionary<Vector2Int, Tower> _cells; // if tower is null then cell is empty
         private Vector2 _gridOrigin;
 
@@ -20,6 +22,10 @@ namespace TowerDefense.Managers
 
         private void OnDrawGizmos()
         {
+            if (!ShowGrid) return;
+
+            if (Application.isPlaying) return;
+
             var columns = Mathf.FloorToInt(maxWidth / cellSize);
             var rows = Mathf.FloorToInt(maxHeight / cellSize);
             var origin = new Vector2(transform.position.x, transform.position.z);
@@ -45,7 +51,7 @@ namespace TowerDefense.Managers
 
         private void CreateCells()
         {
-            transform.position = new Vector3(maxWidth / -2f, 0, maxHeight / -2f);
+            transform.position = new Vector3(maxWidth / -2f, transform.position.y, maxHeight / -2f);
             _gridOrigin.x = transform.position.x;
             _gridOrigin.y = transform.position.z;
 
@@ -74,9 +80,25 @@ namespace TowerDefense.Managers
             );
         }
 
+        public Vector3 CellToWorldSurface(Vector2Int cell)
+        {
+            var basePos = CellToWorld(cell);
+            var rayOrigin = basePos + Vector3.up * 100f;
+            var groundLayer = LayerMask.GetMask("Ground");
+            if (Physics.Raycast(rayOrigin, Vector3.down, out var hit, 200f, groundLayer))
+                return new Vector3(basePos.x, hit.point.y, basePos.z);
+            return basePos;
+        }
+
         public bool IsValid(Vector2Int cell)
         {
-            return _cells.ContainsKey(cell) && _cells[cell] is null;
+            if (!_cells.ContainsKey(cell) || _cells[cell] is not null)
+                return false;
+
+            var worldPos = CellToWorld(cell);
+            var groundLayer = LayerMask.GetMask("Ground");
+            var halfSize = new Vector3(cellSize * 0.5f, 0.5f, cellSize * 0.5f);
+            return Physics.CheckBox(worldPos, halfSize, Quaternion.identity, groundLayer);
         }
     }
 }

@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &6910708358104764443
+--- !u!1 &4451855962145866949
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,50 +8,47 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8036641053952510839}
-  - component: {fileID: 651359543795591615}
-  - component: {fileID: 341126914815634508}
-  - component: {fileID: 9077729269847027325}
-  - component: {fileID: 823369812461483030}
-  - component: {fileID: 5750364009981574171}
+  - component: {fileID: 9007635137636388635}
+  - component: {fileID: 1858618534760616613}
+  - component: {fileID: 3516911211085158665}
+  - component: {fileID: 3695091743950532266}
   m_Layer: 0
-  m_Name: RingOfFIreTower
+  m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &8036641053952510839
+--- !u!4 &9007635137636388635
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6910708358104764443}
+  m_GameObject: {fileID: 4451855962145866949}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.13, y: 3.57, z: 1.84}
-  m_LocalScale: {x: 1, y: 6.3036, z: 1}
+  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalScale: {x: 1, y: 6, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 2731404312590289965}
-  m_Father: {fileID: 0}
+  m_Children: []
+  m_Father: {fileID: 8036641053952510839}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &651359543795591615
+--- !u!33 &1858618534760616613
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6910708358104764443}
+  m_GameObject: {fileID: 4451855962145866949}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &341126914815634508
+--- !u!23 &3516911211085158665
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6910708358104764443}
+  m_GameObject: {fileID: 4451855962145866949}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -94,13 +91,13 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &9077729269847027325
+--- !u!65 &3695091743950532266
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6910708358104764443}
+  m_GameObject: {fileID: 4451855962145866949}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -114,7 +111,42 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: -0.00000023841858, z: 0}
+--- !u!1 &6910708358104764443
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8036641053952510839}
+  - component: {fileID: 823369812461483030}
+  - component: {fileID: 5750364009981574171}
+  m_Layer: 0
+  m_Name: RingOfFIreTower
+  m_TagString: Untagged
+  m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8036641053952510839
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6910708358104764443}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 5.13, y: 3.57, z: 1.84}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2731404312590289965}
+  - {fileID: 9007635137636388635}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &823369812461483030
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -129,6 +161,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TowerDefense.Towers.Tower
   selectedRingTransform: {fileID: 2731404312590289965}
   data: {fileID: 11400000, guid: b674255f29ab399469ac9d67876f8865, type: 2}
+  offset: {x: 0, y: 3.5, z: 0}
 --- !u!114 &5750364009981574171
 MonoBehaviour:
   m_ObjectHideFlags: 0

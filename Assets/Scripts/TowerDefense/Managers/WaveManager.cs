@@ -12,7 +12,6 @@ namespace TowerDefense.Managers
         [SerializeField] private Spline startingSpline;
         [SerializeField] private float timeBetweenSpawns = 1f;
 
-
         private int _enemiesAlive;
         public static WaveManager Instance { get; private set; }
         public List<EnemyMovement> EnemyMovements { get; private set; }

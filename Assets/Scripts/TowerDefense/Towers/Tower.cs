@@ -9,6 +9,8 @@ namespace TowerDefense.Towers
         [SerializeField] private Transform selectedRingTransform;
 
         public TowerData.TowerData data;
+
+        [SerializeField] private Vector3 offset;
         private float _currentCooldown;
 
         public float Range { get; set; }
@@ -66,6 +68,11 @@ namespace TowerDefense.Towers
             Damage = data.damage;
             AttackSpeed = data.attackSpeed;
             Range = data.baseRange;
+        }
+
+        public Vector3 GetPosition()
+        {
+            return selectedRingTransform.position + offset;
         }
     }
 }

@@ -621,7 +621,7 @@ Transform:
   m_GameObject: {fileID: 875730672}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -20, y: 1, z: 0}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -680,6 +680,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TowerDefense.Towers.Tower
   selectedRingTransform: {fileID: 0}
   data: {fileID: 11400000, guid: b674255f29ab399469ac9d67876f8865, type: 2}
+  offset: {x: 0, y: 0, z: 0}
 --- !u!65 &949231685
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1551,7 +1552,7 @@ GameObject:
   - component: {fileID: 1845675033}
   - component: {fileID: 1845675032}
   - component: {fileID: 1845675031}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1651,11 +1652,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &2036962126 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2731404312590289965, guid: f143445239481704e97f46e21c9c622f, type: 3}
-  m_PrefabInstance: {fileID: 1615884505594242351}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2122010982 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 320508991272111797, guid: 6f55f25272c9aa540b124690d93e1f36, type: 3}
@@ -1722,75 +1718,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 705fd914e5c5f304099e825de71f0983, type: 3}
---- !u!1001 &1615884505594242351
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 823369812461483030, guid: f143445239481704e97f46e21c9c622f, type: 3}
-      propertyPath: selectedRingTransform
-      value: 
-      objectReference: {fileID: 2036962126}
-    - target: {fileID: 6910708358104764443, guid: f143445239481704e97f46e21c9c622f, type: 3}
-      propertyPath: m_Name
-      value: RingOfFIreTower
-      objectReference: {fileID: 0}
-    - target: {fileID: 6910708358104764443, guid: f143445239481704e97f46e21c9c622f, type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 6910708358104764443, guid: f143445239481704e97f46e21c9c622f, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8036641053952510839, guid: f143445239481704e97f46e21c9c622f, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -7.15
-      objectReference: {fileID: 0}
-    - target: {fileID: 8036641053952510839, guid: f143445239481704e97f46e21c9c622f, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 3.57
-      objectReference: {fileID: 0}
-    - target: {fileID: 8036641053952510839, guid: f143445239481704e97f46e21c9c622f, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 14.98
-      objectReference: {fileID: 0}
-    - target: {fileID: 8036641053952510839, guid: f143445239481704e97f46e21c9c622f, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8036641053952510839, guid: f143445239481704e97f46e21c9c622f, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8036641053952510839, guid: f143445239481704e97f46e21c9c622f, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8036641053952510839, guid: f143445239481704e97f46e21c9c622f, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8036641053952510839, guid: f143445239481704e97f46e21c9c622f, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8036641053952510839, guid: f143445239481704e97f46e21c9c622f, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8036641053952510839, guid: f143445239481704e97f46e21c9c622f, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: f143445239481704e97f46e21c9c622f, type: 3}
 --- !u!1001 &3871170711099309641
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1888,6 +1815,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 594912519691496926, guid: cf13f43674bf05341be17f1e0a76994b, type: 3}
+      propertyPath: ShowGrid
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 594912519691496926, guid: cf13f43674bf05341be17f1e0a76994b, type: 3}
+      propertyPath: cellSize
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1277387835296633148, guid: cf13f43674bf05341be17f1e0a76994b, type: 3}
       propertyPath: m_Name
       value: GameManager
@@ -1938,7 +1873,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5239348627421981922, guid: cf13f43674bf05341be17f1e0a76994b, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5311769185857792135, guid: cf13f43674bf05341be17f1e0a76994b, type: 3}
       propertyPath: m_Enabled
@@ -1956,6 +1891,10 @@ PrefabInstance:
       propertyPath: 'allModifiers.Array.data[0]'
       value: 
       objectReference: {fileID: 11400000, guid: c5e70391d8a95364faf95dd15cc0f509, type: 2}
+    - target: {fileID: 5702281366837490819, guid: cf13f43674bf05341be17f1e0a76994b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7547576180417109535, guid: cf13f43674bf05341be17f1e0a76994b, type: 3}
       propertyPath: spline
       value: 
@@ -2050,7 +1989,6 @@ SceneRoots:
   - {fileID: 1845675034}
   - {fileID: 1489276193}
   - {fileID: 3871170711099309641}
-  - {fileID: 1615884505594242351}
   - {fileID: 949231688}
   - {fileID: 165589737287268234}
   - {fileID: 7328431105810449270}
