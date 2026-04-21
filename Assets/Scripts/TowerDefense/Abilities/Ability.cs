@@ -7,14 +7,14 @@ namespace TowerDefense.Abilities
 {
     public abstract class Ability : ScriptableObject
     {
-        [Header("Ability Info")] 
-        public string abilityName;
+        [Header("Ability Info")] public string abilityName;
+
         public string description;
         public Sprite icon;
-        
-        [Header("Passive Modifiers")]
-        public TowerStatModifier statModifier;
-        
+        public StatusEffectSO StatusEffect;
+
+        [Header("Passive Modifiers")] public TowerStatModifier statModifier;
+
         public abstract void Execute(Tower tower, Enemy target);
 
         public virtual void SetupModifiers(Tower tower)
@@ -25,6 +25,15 @@ namespace TowerDefense.Abilities
         public virtual void RemoveModifiers(Tower tower)
         {
             statModifier?.Remove(tower);
+        }
+
+        protected virtual void ApplyStatusEffects(Enemy enemy)
+        {
+        }
+
+        protected virtual int GetStacks(Enemy enemy)
+        {
+            return 1;
         }
     }
 }

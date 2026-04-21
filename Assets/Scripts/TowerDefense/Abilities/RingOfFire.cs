@@ -17,7 +17,15 @@ namespace TowerDefense.Abilities
 
             for (var i = 0; i < hitCount; i++)
                 if (results[i].TryGetComponent<Enemy>(out var hitEnemy))
+                {
                     hitEnemy.TakeDamage(tower.Damage);
+                    ApplyStatusEffects(hitEnemy);
+                }
+        }
+
+        protected override void ApplyStatusEffects(Enemy enemy)
+        {
+            enemy.AddStatus(StatusEffect, GetStacks(enemy));
         }
     }
 }
