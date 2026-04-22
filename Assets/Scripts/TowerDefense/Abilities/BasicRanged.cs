@@ -11,7 +11,7 @@ namespace TowerDefense.Abilities
         {
             if (target is null) return;
 
-            target.TakeDamage(tower.Damage);
+            target.TakeDamage(tower.Damage, this);
             ApplyStatusEffects(target);
 
             Debug.DrawLine(tower.transform.position, target.transform.position, Color.green, 1f, false);
@@ -19,6 +19,7 @@ namespace TowerDefense.Abilities
 
         protected override void ApplyStatusEffects(Enemy enemy)
         {
+            base.ApplyStatusEffects(enemy);
             enemy.AddStatus(StatusEffect, GetStacks(enemy));
         }
     }

@@ -1,15 +1,22 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using TowerDefense.Abilities;
+using TowerDefense.Interfaces;
 using TowerDefense.Managers;
 using TowerDefense.Towers;
+using TowerDefense.UI;
 using UnityEngine;
 
 namespace TowerDefense.AI
 {
     public class Enemy : MonoBehaviour
     {
+        [SerializeField] private Transform uiRoot;
+        [SerializeField] private Canvas stackCanvas;
+
         private readonly Dictionary<StatusEffectSO, StatusInstance> _statuses = new();
+        private readonly Dictionary<StatusEffectSO, GameObject> _statusUIs = new();
+
         public float Health { get; set; } = 100f;
 
         public float PathProgress { get; set; }
@@ -27,7 +34,16 @@ namespace TowerDefense.AI
         {
             var toRemove = (from pair in _statuses where pair.Value.IsExpired() select pair.Key).ToList();
 
-            foreach (var key in toRemove) _statuses.Remove(key);
+            foreach (var key in toRemove)
+            {
+                _statuses.Remove(key);
+
+                if (_statusUIs.TryGetValue(key, out var ui))
+                {
+                    Destroy(ui);
+                    _statusUIs.Remove(key);
+                }
+            }
         }
 
         public bool IsInRange(Tower tower)
@@ -46,15 +62,19 @@ namespace TowerDefense.AI
             {
                 instance = new StatusInstance(status);
                 _statuses[status] = instance;
+
+                var go = Instantiate(status.uiPrefab, uiRoot);
+                go.GetComponent<StackUI>().Init(instance, stackCanvas);
+                _statusUIs[status] = go;
             }
 
             instance.AddStacks(stacks);
         }
 
-        public void TakeDamage(float damage)
+        public void TakeDamage(float damage, IDamageSource src)
         {
             Health -= damage;
-            print($"Damage taken: {damage}");
+            print($"Damage taken: {damage} from {src.DisplayName}");
             if (!(Health <= 0f)) return;
 
             print("enemy dead");

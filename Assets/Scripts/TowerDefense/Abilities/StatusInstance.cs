@@ -1,15 +1,18 @@
-﻿using TowerDefense.AI;
+﻿using System;
+using TowerDefense.AI;
+using TowerDefense.Interfaces;
 using UnityEngine;
 
 namespace TowerDefense.Abilities
 {
-    public class StatusInstance
+    public class StatusInstance : IDamageSource
     {
         private float _duration;
         private float _tickTimer;
         public StatusEffectSO Definition;
         public int MaxStacks;
         public int Stacks;
+
 
         public StatusInstance(StatusEffectSO definition)
         {
@@ -20,6 +23,10 @@ namespace TowerDefense.Abilities
             Stacks = 0;
         }
 
+        public string DisplayName => Definition.name;
+
+        public event Action<int> OnStacksChanged;
+
         public void Tick(float dt, Enemy enemy)
         {
             if (Definition.TickRate > 0f)
@@ -28,7 +35,7 @@ namespace TowerDefense.Abilities
                 if (_tickTimer >= Definition.TickRate)
                 {
                     _tickTimer = 0f;
-                    enemy.TakeDamage(Stacks * Definition.DamagePerTick);
+                    enemy.TakeDamage(Stacks * Definition.DamagePerTick, this);
                 }
             }
 
@@ -43,6 +50,7 @@ namespace TowerDefense.Abilities
         public void AddStacks(int amount)
         {
             Stacks = Mathf.Clamp(Stacks + amount, 0, MaxStacks);
+            OnStacksChanged?.Invoke(Stacks);
         }
     }
 }
