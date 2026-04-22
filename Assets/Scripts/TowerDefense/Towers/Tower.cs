@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace TowerDefense.Towers
 {
-    public class Tower : MonoBehaviour, IInteraction
+    public class Tower : MonoBehaviour, IInteraction, IDamageSource
     {
         [SerializeField] private Transform selectedRingTransform;
 
@@ -38,6 +38,8 @@ namespace TowerDefense.Towers
             Attack();
             _currentCooldown = 1f / data.attackSpeed;
         }
+
+        public string DisplayName => gameObject.name;
 
 
         public void Interact()

@@ -16,6 +16,10 @@ namespace TowerDefense.Abilities
 
         [Header("Tick")] public float TickRate;
         public float DamagePerTick;
+
+        [Header("UI")] public Sprite Icon;
+        public GameObject uiPrefab;
+        public Color BackgroundColor;
     }
 
     public enum ElementTag
