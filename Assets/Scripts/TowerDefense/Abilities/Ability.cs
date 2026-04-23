@@ -1,22 +1,19 @@
 using TowerDefense.AI;
-using TowerDefense.Interfaces;
 using TowerDefense.Towers;
 using TowerDefense.Towers.TowerStatModifiers;
 using UnityEngine;
 
 namespace TowerDefense.Abilities
 {
-    public abstract class Ability : ScriptableObject, IDamageSource
+    public abstract class Ability : ScriptableObject
     {
         [Header("Ability Info")] public string abilityName;
 
         public string description;
         public Sprite icon;
-        public StatusEffectSO StatusEffect;
 
         [Header("Passive Modifiers")] public TowerStatModifier statModifier;
-
-        public string DisplayName => abilityName;
+        public readonly StatusEffectSO StatusEffect;
 
         public abstract void Execute(Tower tower, Enemy target);
 
@@ -30,7 +27,7 @@ namespace TowerDefense.Abilities
             statModifier?.Remove(tower);
         }
 
-        protected virtual void ApplyStatusEffects(Enemy enemy)
+        protected virtual void ApplyStatusEffects(Enemy enemy, Tower tower)
         {
         }
 
