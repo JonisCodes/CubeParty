@@ -7,35 +7,37 @@ namespace TowerDefense.Abilities
 {
     public class StatusInstance : IDamageSource
     {
+        public readonly StatusEffectSO Definition;
         private float _duration;
         private float _tickTimer;
-        public StatusEffectSO Definition;
         public int MaxStacks;
         public int Stacks;
 
 
-        public StatusInstance(StatusEffectSO definition)
+        public StatusInstance(StatusEffectSO definition, GameObject owner)
         {
             Definition = definition;
             MaxStacks = definition.maxStacks;
-            _duration = definition.HasDuration ? definition.Duration : float.MaxValue;
+            _duration = definition.hasDuration ? definition.duration : float.MaxValue;
             _tickTimer = 0f;
             Stacks = 0;
+            Owner = owner;
         }
 
-        public string DisplayName => Definition.name;
+        public string DisplayName => $"{Owner.name}: {Definition.name}";
+        public GameObject Owner { get; }
 
         public event Action<int> OnStacksChanged;
 
         public void Tick(float dt, Enemy enemy)
         {
-            if (Definition.TickRate > 0f)
+            if (Definition.tickRate > 0f)
             {
                 _tickTimer += dt;
-                if (_tickTimer >= Definition.TickRate)
+                if (_tickTimer >= Definition.tickRate)
                 {
                     _tickTimer = 0f;
-                    enemy.TakeDamage(Stacks * Definition.DamagePerTick, this);
+                    enemy.TakeDamage(Stacks * Definition.damagePerTick, this);
                 }
             }
 

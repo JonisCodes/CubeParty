@@ -228,3 +228,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TowerDefense.AI.Enemy
   uiRoot: {fileID: 5046312961667133738}
   stackCanvas: {fileID: 2860059347004491996}
+  xpOnDeath: 5
