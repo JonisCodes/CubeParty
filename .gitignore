@@ -58,6 +58,9 @@ sysinfo.txt
 # Unity auto-recovery scenes
 /[Aa]ssets/[_]Recovery/
 
+# JetBrains Rider
+.idea/
+
 # Builds
 *.apk
 *.aab
