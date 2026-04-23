@@ -11,7 +11,7 @@ namespace TowerDefense.Abilities
         {
             if (tower is null || target is null) return;
 
-            target.TakeDamage(tower.Damage);
+            target.TakeDamage(tower.Damage, this);
             Debug.DrawLine(tower.transform.position, target.transform.position, Color.darkBlue, 1f, false);
         }
     }
