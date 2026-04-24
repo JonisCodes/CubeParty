@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace TowerDefense.AI
 {
-    public class Enemy : MonoBehaviour
+    public class Enemy : MonoBehaviour, IDamageable
     {
         [SerializeField] private Transform uiRoot;
         [SerializeField] private Canvas stackCanvas;
@@ -36,6 +36,24 @@ namespace TowerDefense.AI
 
             CleanupStatuses();
         }
+
+        public void TakeDamage(float damage, IDamageSource src)
+        {
+            Health -= damage;
+            print($"Damage taken: {damage} from {src.DisplayName}");
+            if (!(Health <= 0f)) return;
+
+            OnDeath(src);
+        }
+
+        public void ApplyStatus(StatusEffectSO effect, IDamageSource source, int stacks = 1)
+        {
+            if (effect is null || source is null) return;
+
+            AddStatus(effect, stacks, source);
+        }
+
+        public Vector3 Position => transform.position;
 
         private void CleanupStatuses()
         {
@@ -66,7 +84,7 @@ namespace TowerDefense.AI
         {
             if (!_statuses.TryGetValue(status, out var instance))
             {
-                instance = new StatusInstance(status, source.Owner);
+                instance = new StatusInstance(status, source);
                 _statuses[status] = instance;
 
                 var statusUI = status.CreateUI(instance, uiRoot);
@@ -74,15 +92,6 @@ namespace TowerDefense.AI
             }
 
             instance.AddStacks(stacks);
-        }
-
-        public void TakeDamage(float damage, IDamageSource src)
-        {
-            Health -= damage;
-            print($"Damage taken: {damage} from {src.DisplayName}");
-            if (!(Health <= 0f)) return;
-
-            OnDeath(src);
         }
 
         private void OnDeath(IDamageSource deathSource)

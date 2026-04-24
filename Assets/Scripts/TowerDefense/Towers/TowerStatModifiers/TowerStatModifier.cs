@@ -1,41 +1,26 @@
-﻿using UnityEngine;
+﻿using TowerDefense.Enums;
+using TowerDefense.Interfaces;
+using UnityEngine;
 
 namespace TowerDefense.Towers.TowerStatModifiers
 {
     [CreateAssetMenu(fileName = "Tower Stat Modifier", menuName = "Tower Stat/Modifier", order = 0)]
-    public class TowerStatModifier : ScriptableObject
+    public class TowerStatModifier : ScriptableObject, IStatModifier
     {
-        public float rangeMultiplier = 1f;
-        public float damageMultiplier = 1f;
-        public float attackSpeedMultiplier = 1f;
-        public float healthMultiplier = 1f;
+        public float value = 1f;
+        public ModifierType type;
 
-        public void Apply(Tower tower)
-        {
-            if (tower is null)
-            {
-                Debug.LogWarning("Tower Stat Modifier: tower is null");
-                return;
-            }
-            
-            tower.Range *= rangeMultiplier;
-            tower.AttackSpeed *= attackSpeedMultiplier;
-            tower.Damage *= damageMultiplier;
-            tower.Health *= healthMultiplier;
-        }
+        public StatType stat;
+        public StatType Stat => stat;
 
-        public void Remove(Tower tower)
+        public float Apply(float baseValue)
         {
-            if (tower is null)
+            return type switch
             {
-                Debug.LogWarning("Tower Stat Modifier: tower is null");
-                return;
-            }
-            
-            tower.Range /= rangeMultiplier;
-            tower.AttackSpeed /= attackSpeedMultiplier;
-            tower.Damage /= damageMultiplier;
-            tower.Health /= healthMultiplier;
+                ModifierType.Multiply => baseValue * value,
+                ModifierType.Add => baseValue + value,
+                _ => baseValue
+            };
         }
     }
 }

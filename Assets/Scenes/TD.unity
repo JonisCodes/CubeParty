@@ -1786,28 +1786,8 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1099249113954900346, guid: 6f55f25272c9aa540b124690d93e1f36, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 3871170711099309643}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f55f25272c9aa540b124690d93e1f36, type: 3}
---- !u!1 &3871170711099309642 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1099249113954900346, guid: 6f55f25272c9aa540b124690d93e1f36, type: 3}
-  m_PrefabInstance: {fileID: 3871170711099309641}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &3871170711099309643
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3871170711099309642}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c822b6128f926541aaa45cd67bb29da, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GizmoHandler
 --- !u!1001 &7328431105810449270
 PrefabInstance:
   m_ObjectHideFlags: 0

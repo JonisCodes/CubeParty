@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BasicTowerData
   m_EditorClassIdentifier: Assembly-CSharp::TowerDefense.Towers.TowerData.TowerData
   damage: 1
-  baseRange: 100
+  baseRange: 10
   attackSpeed: 1
   abilities:
   - {fileID: 11400000, guid: 33592ce0cc5b9d8478700b720e3f43c5, type: 2}

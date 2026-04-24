@@ -1,4 +1,3 @@
-using System.Linq;
 using TowerDefense.Towers;
 using UnityEngine;
 
@@ -29,9 +28,6 @@ public class GizmoHandler : MonoBehaviour
 
     private float GetTotalRange()
     {
-        if (_tower is null) return float.MinValue;
-
-        return _tower.data.abilities.Aggregate(_tower.data.baseRange,
-            (current, ability) => current * ability.statModifier.rangeMultiplier);
+        return _tower?.Range ?? float.MinValue;
     }
 }

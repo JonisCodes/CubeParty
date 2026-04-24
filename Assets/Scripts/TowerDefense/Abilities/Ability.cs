@@ -1,5 +1,5 @@
+using System.Collections.Generic;
 using TowerDefense.AI;
-using TowerDefense.Towers;
 using TowerDefense.Towers.TowerStatModifiers;
 using UnityEngine;
 
@@ -12,24 +12,14 @@ namespace TowerDefense.Abilities
         public string description;
         public Sprite icon;
 
-        [Header("Passive Modifiers")] public TowerStatModifier statModifier;
-        public readonly StatusEffectSO StatusEffect;
+        public float cooldown;
+        public float baseScalingPerLevel = 1;
 
-        public abstract void Execute(Tower tower, Enemy target);
+        public float damage;
 
-        public virtual void SetupModifiers(Tower tower)
-        {
-            statModifier?.Apply(tower);
-        }
+        [Header("Passive Modifiers")] public List<TowerStatModifier> statModifiers;
 
-        public virtual void RemoveModifiers(Tower tower)
-        {
-            statModifier?.Remove(tower);
-        }
-
-        protected virtual void ApplyStatusEffects(Enemy enemy, Tower tower)
-        {
-        }
+        public List<StatusEffectSO> onHitEffects = new();
 
         protected virtual int GetStacks(Enemy enemy)
         {

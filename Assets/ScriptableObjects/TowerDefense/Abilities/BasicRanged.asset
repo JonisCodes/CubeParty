@@ -15,5 +15,13 @@ MonoBehaviour:
   abilityName: Ranged Attack
   description: A generic ranged attack
   icon: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  StatusEffect: {fileID: 11400000, guid: a92ea967da1f8b549a42cd9a1f71b569, type: 2}
-  statModifier: {fileID: 11400000, guid: bc438fba29f627449b495ea695fac1da, type: 2}
+  cooldown: 1
+  baseScalingPerLevel: 1
+  damage: 1
+  statModifiers:
+  - {fileID: 11400000, guid: bc438fba29f627449b495ea695fac1da, type: 2}
+  - {fileID: 11400000, guid: 20b01b473269ca4429d4233cacd57e10, type: 2}
+  - {fileID: 11400000, guid: 0675a43be6c0041489887a2719006abe, type: 2}
+  onHitEffects:
+  - {fileID: 11400000, guid: a92ea967da1f8b549a42cd9a1f71b569, type: 2}
+  - {fileID: 11400000, guid: 8109ee3d7a8655148bc8b4807174d3e6, type: 2}

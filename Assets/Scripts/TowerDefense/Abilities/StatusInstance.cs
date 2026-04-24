@@ -14,14 +14,14 @@ namespace TowerDefense.Abilities
         public int Stacks;
 
 
-        public StatusInstance(StatusEffectSO definition, GameObject owner)
+        public StatusInstance(StatusEffectSO definition, IDamageSource source)
         {
             Definition = definition;
             MaxStacks = definition.maxStacks;
             _duration = definition.hasDuration ? definition.duration : float.MaxValue;
             _tickTimer = 0f;
             Stacks = 0;
-            Owner = owner;
+            Owner = source.Owner;
         }
 
         public string DisplayName => $"{Owner.name}: {Definition.name}";

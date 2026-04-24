@@ -15,5 +15,5 @@ MonoBehaviour:
   abilityName: Sniper
   description: Sniper, the hidden big hitter.
   icon: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  StatusEffect: {fileID: 11400000, guid: 8109ee3d7a8655148bc8b4807174d3e6, type: 2}
   statModifier: {fileID: 11400000, guid: e25183ecd2ab2984b922eed536064335, type: 2}
+  StatusEffect: []

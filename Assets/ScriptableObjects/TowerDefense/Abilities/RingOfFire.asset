@@ -15,8 +15,8 @@ MonoBehaviour:
   abilityName: Ring of Fire
   description: A ring of fire
   icon: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  StatusEffect: {fileID: 11400000, guid: a92ea967da1f8b549a42cd9a1f71b569, type: 2}
   statModifier: {fileID: 11400000, guid: a17bf5b7a5329b8469c1490fd38b7de9, type: 2}
+  StatusEffect: []
   layerMask:
     serializedVersion: 2
     m_Bits: 64

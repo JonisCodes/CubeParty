@@ -12,14 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df25d1ab36434e92a0029cd85cb3e831, type: 3}
   m_Name: Burning
   m_EditorClassIdentifier: Assembly-CSharp::TowerDefense.Abilities.StatusEffectSO
-  HasDuration: 0
-  EffectTag: 0
-  Duration: 0
-  IsStacking: 1
-  DecayStacks: 0
+  hasDuration: 0
+  effectTag: 0
+  duration: 0
+  isStacking: 1
+  decayStacks: 0
   maxStacks: 10
-  TickRate: 1
-  DamagePerTick: 1
-  Icon: {fileID: 0}
-  uiPrefab: {fileID: 1394747323241653779, guid: c5b7d56c9e468c74183ed1c7d076e275, type: 3}
-  BackgroundColor: {r: 0.8207547, g: 0.4538291, b: 0, a: 1}
+  tickRate: 0.5
+  damagePerTick: 1
+  icon: {fileID: 0}
+  uiPrefab: {fileID: 7863707702740538513, guid: 95fe78886969aa042a396bf98a34c8e7, type: 3}
+  backgroundColor: {r: 1, g: 0.45679283, b: 0, a: 1}
