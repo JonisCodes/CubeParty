@@ -213,7 +213,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15acde1ba8e4389409ad72e6f6f7b9c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TowerDefense.AI.EnemyMovement
-  speed: 0.1
+  speed: 1
 --- !u!114 &5509343151249862937
 MonoBehaviour:
   m_ObjectHideFlags: 0

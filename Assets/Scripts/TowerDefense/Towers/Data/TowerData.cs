@@ -10,6 +10,8 @@ namespace TowerDefense.Towers.Data
     {
         public float damage;
         public float baseRange;
+        public float growthExponent = 1.5f;
+        public float baseXp = 10f;
         [Tooltip("Attacks per second")] public float attackSpeed;
         public List<Ability> abilities;
         public TargetingStrategy targeting;

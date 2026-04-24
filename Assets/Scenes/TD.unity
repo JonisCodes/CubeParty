@@ -573,9 +573,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82b20733cb7d595499ab9dfa7c192d12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TowerDefense.Player.TdPlayerController
-  moveSpeed: 10
+  moveSpeed: 20
   turnSpeed: 0
-  clickRange: 10000
+  clickRange: 100000
   interactableLayer:
     serializedVersion: 2
     m_Bits: 128
@@ -1727,6 +1727,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 320508991272111797, guid: 6f55f25272c9aa540b124690d93e1f36, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.01
+      objectReference: {fileID: 0}
     - target: {fileID: 1099249113954900346, guid: 6f55f25272c9aa540b124690d93e1f36, type: 3}
       propertyPath: m_Name
       value: BasicTower
@@ -1738,6 +1742,10 @@ PrefabInstance:
     - target: {fileID: 1099249113954900346, guid: 6f55f25272c9aa540b124690d93e1f36, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3288257808186977775, guid: 6f55f25272c9aa540b124690d93e1f36, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4683203261965803757, guid: 6f55f25272c9aa540b124690d93e1f36, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1783,6 +1791,10 @@ PrefabInstance:
       propertyPath: selectedRingTransform
       value: 
       objectReference: {fileID: 2122010982}
+    - target: {fileID: 7987881592294212296, guid: 6f55f25272c9aa540b124690d93e1f36, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1880,6 +1892,10 @@ PrefabInstance:
       propertyPath: spline
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 7547576180417109535, guid: cf13f43674bf05341be17f1e0a76994b, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1887,6 +1903,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1277387835296633148, guid: cf13f43674bf05341be17f1e0a76994b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7328431105810449275}
+    - targetCorrespondingSourceObject: {fileID: 1277387835296633148, guid: cf13f43674bf05341be17f1e0a76994b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7328431105810449279}
   m_SourcePrefab: {fileID: 100100000, guid: cf13f43674bf05341be17f1e0a76994b, type: 3}
 --- !u!1 &7328431105810449271 stripped
 GameObject:
@@ -1905,6 +1924,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5511909f6df945a7b113c061b73f8f88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TowerDefense.Managers.TowerManager
+--- !u!114 &7328431105810449279
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7328431105810449271}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 823208ac7c7440b2bf1b1ebeac8cdb1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TowerDefense.Managers.UpgradeDatabase
+  allUpgrades:
+  - {fileID: 11400000, guid: aa46cc140bdfdcb4ebd6af884cbc61bb, type: 2}
+  - {fileID: 11400000, guid: 8d483f6dae97e1c47a67c9c4703f406c, type: 2}
 --- !u!1001 &9063930476686061259
 PrefabInstance:
   m_ObjectHideFlags: 0

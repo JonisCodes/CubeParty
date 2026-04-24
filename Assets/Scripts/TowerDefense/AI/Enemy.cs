@@ -40,7 +40,7 @@ namespace TowerDefense.AI
         public void TakeDamage(float damage, IDamageSource src)
         {
             Health -= damage;
-            print($"Damage taken: {damage} from {src.DisplayName}");
+            // print($"Damage taken: {damage} from {src.DisplayName}");
             if (!(Health <= 0f)) return;
 
             OnDeath(src);

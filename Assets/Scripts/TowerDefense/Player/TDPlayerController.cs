@@ -85,10 +85,9 @@ namespace TowerDefense.Player
 
             if (!Physics.Raycast(ray, out var hit, clickRange, interactableLayer)) return;
 
-            // Reset prev tower before new tower is interacted with
             _selectedTower?.Uninteract();
 
-            _selectedTower = hit.collider.GetComponent<Tower>();
+            _selectedTower = hit.collider.GetComponentInParent<Tower>();
             _selectedTower?.Interact();
         }
 

@@ -20,12 +20,14 @@ namespace TowerDefense.Towers
 
         [SerializeField] private Vector3 offset;
 
-        [SerializeField] private float xpToNextLevel = 10f;
 
         private readonly List<IStatModifier> _modifiers = new();
-        private List<AbilityInstance> _abilities;
         private float _currentCooldown;
         private bool _isBatching;
+        private float _totalUpgradePowerBias;
+
+        private float _xpToNextLevel = 10f;
+        public List<AbilityInstance> Abilities { get; private set; }
 
         public float Range { get; set; }
         public float AttackSpeed { get; set; }
@@ -40,7 +42,7 @@ namespace TowerDefense.Towers
 
         private void Update()
         {
-            foreach (var ability in _abilities)
+            foreach (var ability in Abilities)
             {
                 ability.Tick(Time.deltaTime);
 
@@ -51,13 +53,6 @@ namespace TowerDefense.Towers
 
                 ability.TryExecute(this, target);
             }
-
-            // _currentCooldown -= Time.deltaTime;
-            //
-            // if (_currentCooldown > 0f) return;
-            //
-            // Attack();
-            // _currentCooldown = 1f / data.attackSpeed;
         }
 
         public string DisplayName => gameObject.name;
@@ -77,7 +72,7 @@ namespace TowerDefense.Towers
         public void AddXp(float amount)
         {
             CurrentXP += amount;
-            if (CurrentXP >= xpToNextLevel)
+            if (CurrentXP >= _xpToNextLevel)
                 LevelUp();
         }
 
@@ -97,7 +92,7 @@ namespace TowerDefense.Towers
 
         private void InitializeAbilities()
         {
-            _abilities = new List<AbilityInstance>();
+            Abilities = new List<AbilityInstance>();
 
             BeginModifierBatch();
 
@@ -105,26 +100,13 @@ namespace TowerDefense.Towers
             {
                 var instance = new AbilityInstance(ability);
                 BindAbility(instance);
-                _abilities.Add(instance);
+                Abilities.Add(instance);
             }
 
-            foreach (var ability in _abilities)
+            foreach (var ability in Abilities)
                 ability.Equip(this);
 
             EndModifierBatch();
-        }
-
-        private void Attack()
-        {
-            if (WaveManager.Instance is null) return;
-
-            var target = data.targeting.GetTarget(this, WaveManager.Instance.CurrentEnemies);
-
-            if (target is null)
-                // Debug.LogError("There is no targeting for this tower");
-                return;
-
-            foreach (var ability in _abilities) ability.Execute(this, target);
         }
 
         private void BindAbility(AbilityInstance ability)
@@ -148,9 +130,16 @@ namespace TowerDefense.Towers
         {
             Level++;
             CurrentXP = 0;
+            ApplyLevelStats();
             print($"Level Up : {Level}");
 
-            ApplyLevelStats();
+            var upgrade = UpgradeDatabase.Instance.GetRandomUpgrade();
+
+            print(upgrade.name);
+
+            upgrade.Apply(this);
+            _totalUpgradePowerBias += upgrade.powerWeight;
+            RecalculateXpThreshold();
         }
 
         private void ApplyLevelStats()
@@ -178,7 +167,6 @@ namespace TowerDefense.Towers
 
         private void RecalculateStats()
         {
-            // Damage = ApplyModifiers(StatType.Damage, data.damage);
             Range = ApplyModifiers(StatType.Range, data.baseRange);
             AttackSpeed = ApplyModifiers(StatType.AttackSpeed, data.attackSpeed);
         }
@@ -195,6 +183,11 @@ namespace TowerDefense.Towers
 
             if (!_isBatching)
                 RecalculateStats();
+        }
+
+        private void RecalculateXpThreshold()
+        {
+            _xpToNextLevel = (data.baseXp + _totalUpgradePowerBias) * Mathf.Pow(Level, data.growthExponent);
         }
     }
 }

@@ -9,6 +9,7 @@ namespace TowerDefense.Abilities
     public class AbilityInstance
     {
         private readonly Ability _definition;
+        private readonly List<IAbilityExecutionModifier> _executionModifiers = new();
         private readonly List<StatusEffectSO> _onHitEffects = new();
 
         private int _level;
@@ -22,6 +23,11 @@ namespace TowerDefense.Abilities
         }
 
         public float CooldownRemaining { get; private set; }
+
+        public void AddExecutionModifier(IAbilityExecutionModifier modifier)
+        {
+            _executionModifiers.Add(modifier);
+        }
 
         public void AddOnHitEffect(StatusEffectSO effect)
         {
@@ -51,7 +57,24 @@ namespace TowerDefense.Abilities
             if (CooldownRemaining > 0f)
                 return;
 
-            var context = new AbilityExecutionContext
+            var context = BuildContext(caster, target);
+
+            Action finalExecution = () => OnExecute?.Invoke(context);
+
+            foreach (var modifier in _executionModifiers)
+            {
+                var current = finalExecution;
+                finalExecution = () => modifier.ModifyExecution(this, context, current);
+            }
+
+            finalExecution();
+
+            CooldownRemaining = _definition.cooldown;
+        }
+
+        private AbilityExecutionContext BuildContext(IDamageSource caster, IDamageable target)
+        {
+            return new AbilityExecutionContext
             {
                 Caster = caster.Owner,
                 Target = target,
@@ -61,10 +84,6 @@ namespace TowerDefense.Abilities
                 OnHitEffects = _onHitEffects,
                 BaseDamage = _definition.damage
             };
-
-            OnExecute?.Invoke(context);
-
-            CooldownRemaining = _definition.cooldown;
         }
 
         private float GetPowerScaling()

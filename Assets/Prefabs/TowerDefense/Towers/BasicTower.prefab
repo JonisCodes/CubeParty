@@ -50,6 +50,7 @@ MonoBehaviour:
   selectedRingTransform: {fileID: 320508991272111797}
   data: {fileID: 11400000, guid: 7484583a4cef0d048b8702e3cf7971dd, type: 2}
   offset: {x: 0, y: 3.5, z: 0}
+  xpToNextLevel: 10
 --- !u!114 &5355224185078089360
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -74,7 +75,7 @@ GameObject:
   - component: {fileID: 1342569315853572291}
   - component: {fileID: 5058444523692987190}
   - component: {fileID: 5340581859874048999}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -202,7 +203,7 @@ Transform:
   m_GameObject: {fileID: 7987881592294212296}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.45, z: 0}
+  m_LocalPosition: {x: 0, y: 0.44, z: 0}
   m_LocalScale: {x: 3, y: 0.005, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children: []
